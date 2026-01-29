@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Servicio de la Base de Datos
+  db:
+    image: postgres:15-alpine
+    container_name: hbnb-db
+    restart: always
+    environment:
+      - POSTGRES_USER=hbnb_user
+      - POSTGRES_PASSWORD=hbnb_password
+      - POSTGRES_DB=hbnb_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Servicio de la API (FastAPI)
+  app:
+    build: .
+    container_name: hbnb-api
+    restart: always
+    ports:
+      - "8000:8080"
+    environment:
+      - DATABASE_URL=postgresql://hbnb_user:hbnb_password@db:5432/hbnb_db
+    depends_on:
+      - db
+
+# el volumen para que los datos sean persistentes
+volumes:
+  postgres_data:

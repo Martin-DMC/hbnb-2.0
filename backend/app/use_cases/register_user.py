@@ -1,5 +1,6 @@
 from app.domain.models.user import User
-from app.domain.repositories import UserRepository
+from app.domain.repositories import UserRepository, AmenityRepository
+from app.domain.models.amenity import Amenity
 
 class RegisterUser:
     def __init__(self, user_repo: UserRepository):
@@ -20,3 +21,14 @@ class RegisterUser:
         self.user_repo.add(new_user)
         
         return new_user
+
+class CreateAmenity:
+    def __init__(self, amenity_repo: AmenityRepository):
+        self.amenity_repo = amenity_repo
+
+    def execute(self, name: str) -> Amenity:
+        new_amenity = Amenity(name)
+
+        self.amenity_repo.add(new_amenity)
+
+        return new_amenity
