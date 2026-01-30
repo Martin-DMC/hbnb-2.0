@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from app.domain.models.user import User
 from app.domain.models.amenity import Amenity
-from typing import Optional
+from typing import Optional, List
 
 class UserRepository(ABC):
     @abstractmethod
@@ -19,5 +19,5 @@ class AmenityRepository(ABC):
         pass
 
     @abstractmethod
-    def get_all(self) -> Optional[Amenity]:
+    def get_all(self) -> Optional[List]:
         pass

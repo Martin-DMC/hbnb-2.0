@@ -3,4 +3,4 @@ from .base_model import BaseModel
 
 @dataclass
 class Amenity(BaseModel):
-    Name: str = ""
+    name: str = ""

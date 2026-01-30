@@ -1,6 +1,11 @@
 from fastapi import FastAPI
+from app.infrastructure.persistence.database import engine, Base
 from app.api.endpoints.users import router as user_router
-from app.api.endpoints.users import amenity_router as amenity_router
+from app.api.endpoints.amenities import router as amenity_router
+
+Base.metadata.create_all(bind=engine)
+
+
 app = FastAPI(title="hBnb Remastered API")
 
 app.include_router(user_router, prefix="/users", tags=["Users"])

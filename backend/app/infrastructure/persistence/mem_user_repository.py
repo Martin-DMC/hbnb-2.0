@@ -1,6 +1,6 @@
 from app.domain.models.user import User
 from app.domain.models.amenity import Amenity
-from app.domain.repositories import UserRepository, AmenityRepository
+from app.domain.interfaces import UserRepository, AmenityRepository
 from typing import List, Optional
 
 class InMemoryUserRepository(UserRepository):
