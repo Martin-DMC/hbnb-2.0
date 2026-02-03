@@ -1,5 +1,6 @@
 from app.domain.models.user import User
 from app.domain.interfaces import UserRepository
+from app.core.security import myctx
 
 class RegisterUser:
     def __init__(self, user_repo: UserRepository):
@@ -10,9 +11,10 @@ class RegisterUser:
         if existing_user:
             raise ValueError("El email ya está registrado")
 
+        passwor_hash = myctx.hash(password)
         new_user = User(
             email=email,
-            password=password, 
+            password=passwor_hash, 
             first_name=first_name,
             last_name=last_name
         )

@@ -22,4 +22,13 @@ class SQLAlchemyAmenityRepository(AmenityRepository):
 
     def get_all(self) -> list[Amenity]:
         # Traemos todo de la tabla y lo devolvemos
-        return self.db.query(AmenityModel).all()
+        lista = self.db.query(AmenityModel).all()
+        return [Amenity(id=i.id, name=i.name, created_at=i.created_at) for i in lista]
+
+        # new_lista = list(amenity for amenity in lista == Amenity(amenity))
+    def get(self, name):
+        amenity = self.db.query(AmenityModel).filter(AmenityModel.name == name).first()
+        if amenity == None:
+            return None
+        amenity = Amenity(id=amenity.id, name=amenity.name, created_at=amenity.created_at)
+        return amenity

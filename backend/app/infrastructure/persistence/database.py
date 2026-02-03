@@ -1,9 +1,15 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Usamos la URL que ya configuraste en tu Docker Compose
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://hbnb_user:hbnb_password@db:5432/hbnb_db")
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("No se encontró DATABASE_URL en el archivo .env")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
