@@ -2,8 +2,13 @@
 remaster of my last hbnb
 
 back-end -> fastAPI y clean architecture
-
-dia 1 -> configurar estructura de carpetas (Clean Architecture) y archivos base
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![PostgreSQL](https://img.shields.io/badge/postgresql-%23336791.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-e92063?style=for-the-badge&logo=pydantic&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
 `como correr el backend`
 
@@ -13,7 +18,7 @@ dia 1 -> configurar estructura de carpetas (Clean Architecture) y archivos base
 
 * python3 -m venv venv
 
-* pip install requirement.txt
+* pip install -r requirement.txt
 
 * uvicorn app.main:app --reload
 
@@ -31,6 +36,7 @@ dia 1 -> configurar estructura de carpetas (Clean Architecture) y archivos base
 
 `Estructura del project`
 
+```
 backend
     |- APP |
     |   |- API
@@ -61,3 +67,4 @@ backend
     |- test
     |- docker compose: levanta FastAPI y Postgre
     |- dockerfile: levanta la imagen de Python
+```
