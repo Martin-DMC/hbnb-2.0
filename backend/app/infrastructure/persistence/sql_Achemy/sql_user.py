@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from typing import Optional, List
+from uuid import uuid4
 
 from app.domain.models.user import User
 from app.domain.interfaces import   UserRepository
@@ -38,7 +39,28 @@ class SQLAlchemyUserRepository(UserRepository):
         user = User(id=user.id,
                     first_name=user.first_name,
                     last_name=user.last_name,
+                    password=user.password,
                     email=user.email,
                     created_at=user.created_at
                 )
         return user
+
+    def get_by_id(self, user_id:uuid4 ) -> bool:
+        user = self.db.query(UserModel).filter(UserModel.id == user_id).first()
+        if user == None:
+            return False
+        user = User(id=user.id,
+                    first_name=user.first_name,
+                    last_name=user.last_name,
+                    email=user.email,
+                    created_at=user.created_at
+                )
+        return user
+
+    def delete(self, user_id: str) -> bool:
+        user = self.db.query(UserModel).filter(UserModel.id == user_id).first()
+        if user:
+            self.db.delete(user)
+            self.db.commit()
+            return True
+        return False

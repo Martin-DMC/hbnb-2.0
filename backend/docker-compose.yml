@@ -22,8 +22,11 @@ services:
     restart: always
     ports:
       - "8000:8080"
+    volumes:
+      - .:/app
     environment:
       - DATABASE_URL=postgresql://hbnb_user:hbnb_password@db:5432/hbnb_db
+      - SECRET_KEY=My-SuPeR-ClAvE-PaRa-RemaStEr
     depends_on:
       - db
 
