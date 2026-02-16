@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from uuid import UUID
+from typing import Optional
 from datetime import datetime
 
 class UserBase(BaseModel):
@@ -17,3 +18,11 @@ class UserResponse(UserBase):
     class Config:
         from_attributes = True
 
+class UserUpdateSchema(BaseModel):
+    first_name: Optional[str] = None
+    last_name: Optional[str] = None
+    email: Optional[EmailStr] = None
+    password: Optional[str] = None
+
+    class Config:
+        from_attributes = True

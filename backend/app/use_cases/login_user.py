@@ -15,7 +15,7 @@ class LoginUser:
 
         return {
             "access_token": token,
-            "token_type": "baerer",
+            "token_type": "bearer",
             "user": {
                 "email": user.email,
                 "id": user.id

@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from .base_model import BaseModel
 
 @dataclass
@@ -8,3 +8,5 @@ class User(BaseModel):
     first_name: str = ""
     last_name: str = ""
     is_admin: bool = False
+    places: list = field(default_factory=list)
+    reviews: list = field(default_factory=list)

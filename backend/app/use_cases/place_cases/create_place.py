@@ -1,5 +1,6 @@
 from app.domain.models.place import Place
 from app.domain.interfaces import PlaceRepository
+from uuid import UUID
 
 class Create_Place:
     def __init__(self, place_repo: PlaceRepository):
@@ -10,7 +11,8 @@ class Create_Place:
                 description: str,
                 price: float,
                 longitude: float,
-                latitude: float
+                latitude: float,
+                owner_id: UUID
         ) -> Place:
 
         new_place = Place(
@@ -18,7 +20,8 @@ class Create_Place:
             description=description, 
             price=price,
             longitude=longitude,
-            latitude=latitude
+            latitude=latitude,
+            owner_id=owner_id
         )
 
         self.place_repo.add(new_place)
